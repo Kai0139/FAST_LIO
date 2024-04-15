@@ -398,6 +398,7 @@ bool sync_packages(MeasureGroup &meas)
 
     if (last_timestamp_imu < lidar_end_time)
     {
+        ROS_INFO("time stamp fault: last_imu: %f, lidar_end: %f", last_timestamp_imu, lidar_end_time);
         return false;
     }
 
@@ -918,7 +919,6 @@ int main(int argc, char** argv)
             kdtree_size_st = ikdtree.size();
             
             // cout<<"[ mapping ]: In num: "<<feats_undistort->points.size()<<" downsamp "<<feats_down_size<<" Map num: "<<featsFromMapNum<<"effect num:"<<effct_feat_num<<endl;
-
             /*** ICP and iterated Kalman filter update ***/
             if (feats_down_size < 5)
             {
